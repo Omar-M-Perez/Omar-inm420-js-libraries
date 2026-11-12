@@ -1,0 +1,6 @@
+# dependencies (run npm i to get these back)
+node_modules/
+
+# system files
+.DS_Store
+Thumbs.db

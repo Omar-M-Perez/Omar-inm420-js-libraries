@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Snowbird Travel Co. - warm winter escapes from Toronto.">
+
+    <title>Snowbird Travel Co. | Winter Escapes from Toronto</title>
+
+    <!-- favicon -->
+    <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+
+    <!-- google fonts: shrikhand for the headings and ibm plex sans (normal, condensed and mono) for everything else -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@600&family=IBM+Plex+Sans:wght@400;500;600&family=Shrikhand&display=swap">
+
+    <!-- the library stylesheets go above mine so my css can change their styles -->
+    <!-- glide.js core styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.6.2/dist/css/glide.core.min.css">
+    <!-- leaflet styles -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <!-- aos (animate on scroll) styles -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+
+    <!-- my stylesheet -->
+    <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+    <!-- Site Header -->
+    <header class="site-header">
+        <!-- small info bar at the very top -->
+        <p class="ticker">YYZ &rarr; 5 escapes &middot; Winter 2026/27 &middot; Dec to Mar</p>
+
+        <div class="container header-inner">
+            <!-- logo goes back to the top of the page -->
+            <a href="#top" class="logo">Snowbird<span>Travel Co.</span></a>
+
+            <!-- nav links jump to each section using the section ids -->
+            <nav aria-label="Main navigation">
+                <ul class="nav-list">
+                    <li><a href="#destinations">01 Escapes</a></li>
+                    <li><a href="#explore">02 Compare</a></li>
+                    <li><a href="#gallery">03 Postcards</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="top">
+        <!-- Hero -->
+        <section class="hero">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <p class="label">Winter escapes from Toronto</p>
+
+                    <!-- typed.js types the destination names into the empty span -->
+                    <h1 aria-label="Trade the snow for somewhere warm">
+                        Trade the snow for <span id="typed-destination" class="typed-text"></span>
+                    </h1>
+
+                    <p class="hero-text">Five hand-picked places where January means sunscreen, not snow shovels.</p>
+
+                    <div class="hero-buttons">
+                        <a href="#destinations" class="btn btn-primary">Pick an escape &rarr;</a>
+                        <a href="#explore" class="btn btn-ghost">Compare the weather</a>
+                    </div>
+                </div>
+
+                <!-- departures board, it's a table because it's rows and columns of data -->
+                <aside class="board" aria-label="Departures from Toronto">
+                    <p class="board-title label">Departures <span>YYZ</span></p>
+
+                    <table class="board-table">
+                        <thead>
+                            <tr>
+                                <th>To</th>
+                                <th>Code</th>
+                                <th>Flight</th>
+                                <th>Jan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Tulum</td>
+                                <td class="code">TQO</td>
+                                <td>4h</td>
+                                <td>27&deg;</td>
+                            </tr>
+                            <tr>
+                                <td>Cartagena</td>
+                                <td class="code">CTG</td>
+                                <td>5h</td>
+                                <td>31&deg;</td>
+                            </tr>
+                            <tr>
+                                <td>Lisbon</td>
+                                <td class="code">LIS</td>
+                                <td>7h</td>
+                                <td>15&deg;</td>
+                            </tr>
+                            <tr>
+                                <td>Bali</td>
+                                <td class="code">DPS</td>
+                                <td>24h</td>
+                                <td>30&deg;</td>
+                            </tr>
+                            <tr>
+                                <td>Marrakech</td>
+                                <td class="code">RAK</td>
+                                <td>10h</td>
+                                <td>18&deg;</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p class="board-note">Toronto in January: -1&deg;</p>
+                </aside>
+            </div>
+        </section>
+
+        <!-- Destinations (glide.js carousel) -->
+        <!-- the id is what the nav link jumps to -->
+        <section id="destinations" class="section">
+            <div class="container">
+                <header class="section-head" data-aos="fade-up">
+                    <p class="label">01 / The escapes</p>
+                    <h2>Five places to thaw out</h2>
+                    <p>Swipe or use the arrows. Hit <strong>Show on map</strong> to see where it is.</p>
+                </header>
+
+                <!-- glide needs this exact structure: .glide > .glide__track > .glide__slides > .glide__slide -->
+                <div class="glide" data-aos="fade-up">
+                    <div class="glide__track" data-glide-el="track">
+                        <ul class="glide__slides">
+                            <!-- each card is a boarding pass, the button's data-destination tells main.js which place to show -->
+                            <!-- tulum -->
+                            <li class="glide__slide">
+                                <article class="card">
+                                    <p class="card-route">YYZ <span>&rarr;</span> TQO</p>
+                                    <img src="https://images.unsplash.com/photo-1581710862235-eb6e05d8783f?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Palm tree leaning over turquoise water on the Riviera Maya" class="card-img">
+                                    <div class="card-body">
+                                        <p class="label">Mexico</p>
+                                        <h3>Tulum</h3>
+                                        <p>Mayan ruins on a cliff, cenotes to swim in and a beach that looks fake. The easiest escape on the list.</p>
+                                    </div>
+                                    <ul class="card-meta">
+                                        <li><span>Flight</span>~4h direct</li>
+                                        <li><span>Jan high</span>27&deg;C</li>
+                                    </ul>
+                                    <button type="button" class="card-btn" data-destination="tulum">Show on map &rarr;</button>
+                                </article>
+                            </li>
+
+                            <!-- cartagena -->
+                            <li class="glide__slide">
+                                <article class="card">
+                                    <p class="card-route">YYZ <span>&rarr;</span> CTG</p>
+                                    <img src="https://images.unsplash.com/photo-1534943441045-1009d7cb0bb9?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Narrow colonial street with a yellow tower in Cartagena" class="card-img">
+                                    <div class="card-body">
+                                        <p class="label">Colombia</p>
+                                        <h3>Cartagena</h3>
+                                        <p>A walled old town painted every colour, with Caribbean sunsets you can watch from the city walls.</p>
+                                    </div>
+                                    <ul class="card-meta">
+                                        <li><span>Flight</span>~5h</li>
+                                        <li><span>Jan high</span>31&deg;C</li>
+                                    </ul>
+                                    <button type="button" class="card-btn" data-destination="cartagena">Show on map &rarr;</button>
+                                </article>
+                            </li>
+
+                            <!-- lisbon -->
+                            <li class="glide__slide">
+                                <article class="card">
+                                    <p class="card-route">YYZ <span>&rarr;</span> LIS</p>
+                                    <img src="https://images.unsplash.com/photo-1585208798174-6cedd86e019a?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Yellow tram on a street lined with old buildings in Lisbon" class="card-img">
+                                    <div class="card-body">
+                                        <p class="label">Portugal</p>
+                                        <h3>Lisbon</h3>
+                                        <p>Not beach weather, but 15&deg;C and sunny beats -1&deg;C and grey. Pastel streets, yellow trams and past&eacute;is de nata.</p>
+                                    </div>
+                                    <ul class="card-meta">
+                                        <li><span>Flight</span>~7h direct</li>
+                                        <li><span>Jan high</span>15&deg;C</li>
+                                    </ul>
+                                    <button type="button" class="card-btn" data-destination="lisbon">Show on map &rarr;</button>
+                                </article>
+                            </li>
+
+                            <!-- bali -->
+                            <li class="glide__slide">
+                                <article class="card">
+                                    <p class="card-route">YYZ <span>&rarr;</span> DPS</p>
+                                    <img src="https://images.unsplash.com/photo-1532186651327-6ac23687d189?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Temple sitting on a lake in Bali" class="card-img">
+                                    <div class="card-body">
+                                        <p class="label">Indonesia</p>
+                                        <h3>Bali</h3>
+                                        <p>Rice terraces, temples on the water and surf. It's a long trip, so stay at least two weeks.</p>
+                                    </div>
+                                    <ul class="card-meta">
+                                        <li><span>Flight</span>~24h, 1+ stops</li>
+                                        <li><span>Jan high</span>30&deg;C</li>
+                                    </ul>
+                                    <button type="button" class="card-btn" data-destination="bali">Show on map &rarr;</button>
+                                </article>
+                            </li>
+
+                            <!-- marrakech -->
+                            <li class="glide__slide">
+                                <article class="card">
+                                    <p class="card-route">YYZ <span>&rarr;</span> RAK</p>
+                                    <img src="https://images.unsplash.com/photo-1597212618440-806262de4f6b?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Koutoubia Mosque minaret with the Atlas Mountains behind it" class="card-img">
+                                    <div class="card-body">
+                                        <p class="label">Morocco</p>
+                                        <h3>Marrakech</h3>
+                                        <p>Souks, riads and mint tea, with snow on the Atlas Mountains that you only have to look at.</p>
+                                    </div>
+                                    <ul class="card-meta">
+                                        <li><span>Flight</span>~10h, 1 stop</li>
+                                        <li><span>Jan high</span>18&deg;C</li>
+                                    </ul>
+                                    <button type="button" class="card-btn" data-destination="marrakech">Show on map &rarr;</button>
+                                </article>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- slider controls, glide reads the data-glide-dir to know where to move -->
+                    <div class="slider-controls">
+                        <div class="glide__bullets" data-glide-el="controls[nav]">
+                            <button type="button" class="glide__bullet" data-glide-dir="=0" aria-label="Go to Tulum"></button>
+                            <button type="button" class="glide__bullet" data-glide-dir="=1" aria-label="Go to Cartagena"></button>
+                            <button type="button" class="glide__bullet" data-glide-dir="=2" aria-label="Go to Lisbon"></button>
+                            <button type="button" class="glide__bullet" data-glide-dir="=3" aria-label="Go to Bali"></button>
+                            <button type="button" class="glide__bullet" data-glide-dir="=4" aria-label="Go to Marrakech"></button>
+                        </div>
+
+                        <div class="glide__arrows" data-glide-el="controls">
+                            <button type="button" class="glide__arrow" data-glide-dir="&lt;" aria-label="Previous destination">&larr;</button>
+                            <button type="button" class="glide__arrow" data-glide-dir="&gt;" aria-label="Next destination">&rarr;</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Compare (leaflet map + chart.js chart) -->
+        <section id="explore" class="section section-teal">
+            <div class="container">
+                <header class="section-head" data-aos="fade-up">
+                    <p class="label">02 / Compare</p>
+                    <h2>How far, and how warm</h2>
+                    <p>Pick a destination to fly there on the map and see how its winter stacks up against Toronto's.</p>
+                </header>
+
+                <!-- destination buttons, clicking one updates the map and the chart -->
+                <div class="chips" role="group" aria-label="Pick a destination">
+                    <button type="button" class="chip is-active" data-destination="tulum">Tulum</button>
+                    <button type="button" class="chip" data-destination="cartagena">Cartagena</button>
+                    <button type="button" class="chip" data-destination="lisbon">Lisbon</button>
+                    <button type="button" class="chip" data-destination="bali">Bali</button>
+                    <button type="button" class="chip" data-destination="marrakech">Marrakech</button>
+                </div>
+
+                <div class="explore-grid">
+                    <!-- map panel, leaflet puts the map inside the empty div -->
+                    <article class="panel" data-aos="fade-up">
+                        <h3 class="panel-title label">Flight path <span>from YYZ</span></h3>
+                        <div id="trip-map" class="trip-map"></div>
+                    </article>
+
+                    <!-- chart panel, chart.js draws the chart on the canvas -->
+                    <article class="panel" data-aos="fade-up" data-aos-delay="150">
+                        <h3 class="panel-title label">Average highs <span>Dec to Mar, &deg;C</span></h3>
+                        <!-- main.js changes this sentence when you pick a destination -->
+                        <p id="temp-diff" class="temp-diff">Pick a destination to compare.</p>
+                        <div class="chart-box">
+                            <canvas id="temp-chart" aria-label="Bar chart comparing average high temperatures" role="img"></canvas>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery (fslightbox) -->
+        <section id="gallery" class="section">
+            <div class="container">
+                <header class="section-head" data-aos="fade-up">
+                    <p class="label">03 / Postcards</p>
+                    <h2>A few reasons to book</h2>
+                    <p>Click any photo to open it full screen.</p>
+                </header>
+
+                <!-- links with data-fslightbox="postcards" open in the lightbox as one gallery, data-type="image" is needed because the unsplash links don't end in .jpg -->
+                <ul class="gallery-grid">
+                    <li data-aos="fade-up">
+                        <figure>
+                            <a href="https://images.unsplash.com/photo-1522093243371-296c79a66df4?auto=format&amp;fit=crop&amp;w=1600&amp;q=80" data-fslightbox="postcards" data-type="image">
+                                <img src="https://images.unsplash.com/photo-1522093243371-296c79a66df4?auto=format&amp;fit=crop&amp;w=700&amp;q=75" alt="People swimming in a cave cenote" loading="lazy">
+                            </a>
+                            <figcaption>Cenote swim, Riviera Maya</figcaption>
+                        </figure>
+                    </li>
+                    <li data-aos="fade-up" data-aos-delay="100">
+                        <figure>
+                            <a href="https://images.unsplash.com/photo-1536308037887-165852797016?auto=format&amp;fit=crop&amp;w=1600&amp;q=80" data-fslightbox="postcards" data-type="image">
+                                <img src="https://images.unsplash.com/photo-1536308037887-165852797016?auto=format&amp;fit=crop&amp;w=700&amp;q=75" alt="Row of brightly painted houses" loading="lazy">
+                            </a>
+                            <figcaption>Painted houses, Cartagena</figcaption>
+                        </figure>
+                    </li>
+                    <li data-aos="fade-up" data-aos-delay="200">
+                        <figure>
+                            <a href="https://images.unsplash.com/photo-1557093793-d149a38a1be8?auto=format&amp;fit=crop&amp;w=1600&amp;q=80" data-fslightbox="postcards" data-type="image">
+                                <img src="https://images.unsplash.com/photo-1557093793-d149a38a1be8?auto=format&amp;fit=crop&amp;w=700&amp;q=75" alt="Green rice terraces" loading="lazy">
+                            </a>
+                            <figcaption>Rice terraces, Bali</figcaption>
+                        </figure>
+                    </li>
+                    <li data-aos="fade-up" data-aos-delay="300">
+                        <figure>
+                            <a href="https://images.unsplash.com/photo-1580746738099-1cb74f972feb?auto=format&amp;fit=crop&amp;w=1600&amp;q=80" data-fslightbox="postcards" data-type="image">
+                                <img src="https://images.unsplash.com/photo-1580746738099-1cb74f972feb?auto=format&amp;fit=crop&amp;w=700&amp;q=75" alt="Baskets of colourful spices at a market stall" loading="lazy">
+                            </a>
+                            <figcaption>Spice stall, Marrakech</figcaption>
+                        </figure>
+                    </li>
+                    <li data-aos="fade-up">
+                        <figure>
+                            <a href="https://images.unsplash.com/photo-1660092751784-bcfd9b5caf35?auto=format&amp;fit=crop&amp;w=1600&amp;q=80" data-fslightbox="postcards" data-type="image">
+                                <img src="https://images.unsplash.com/photo-1660092751784-bcfd9b5caf35?auto=format&amp;fit=crop&amp;w=700&amp;q=75" alt="Beach lined with palm trees" loading="lazy">
+                            </a>
+                            <figcaption>Palm beach, Riviera Maya</figcaption>
+                        </figure>
+                    </li>
+                    <li data-aos="fade-up" data-aos-delay="100">
+                        <figure>
+                            <a href="https://images.unsplash.com/photo-1536663815808-535e2280d2c2?auto=format&amp;fit=crop&amp;w=1600&amp;q=80" data-fslightbox="postcards" data-type="image">
+                                <img src="https://images.unsplash.com/photo-1536663815808-535e2280d2c2?auto=format&amp;fit=crop&amp;w=700&amp;q=75" alt="Orange-roofed houses next to the water" loading="lazy">
+                            </a>
+                            <figcaption>Terracotta rooftops, Portugal</figcaption>
+                        </figure>
+                    </li>
+                    <li data-aos="fade-up" data-aos-delay="200">
+                        <figure>
+                            <a href="https://images.unsplash.com/photo-1546484475-7f7bd55792da?auto=format&amp;fit=crop&amp;w=1600&amp;q=80" data-fslightbox="postcards" data-type="image">
+                                <img src="https://images.unsplash.com/photo-1546484475-7f7bd55792da?auto=format&amp;fit=crop&amp;w=700&amp;q=75" alt="White parasol and lounger by the sea" loading="lazy">
+                            </a>
+                            <figcaption>Beach day, Bali</figcaption>
+                        </figure>
+                    </li>
+                    <li data-aos="fade-up" data-aos-delay="300">
+                        <figure>
+                            <a href="https://images.unsplash.com/photo-1633394027858-fff49145f120?auto=format&amp;fit=crop&amp;w=1600&amp;q=80" data-fslightbox="postcards" data-type="image">
+                                <img src="https://images.unsplash.com/photo-1633394027858-fff49145f120?auto=format&amp;fit=crop&amp;w=700&amp;q=75" alt="View over the city from the top of the old wall" loading="lazy">
+                            </a>
+                            <figcaption>From the walls, Cartagena</figcaption>
+                        </figure>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p class="logo">Snowbird<span>Travel Co.</span></p>
+            <p>A made-up agency for INM420 by Omar El Sadek, 2026.</p>
+            <p>Photos from <a href="https://unsplash.com">Unsplash</a>. Built with Typed.js, Glide.js, Leaflet, Chart.js, Fullscreen Lightbox and AOS.</p>
+        </div>
+    </footer>
+
+    <!-- the libraries load first so main.js can use them -->
+    <!-- typed.js -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <!-- glide.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.6.2/dist/glide.min.js"></script>
+    <!-- leaflet -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js"></script>
+    <!-- fslightbox (fullscreen lightbox) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.4.1/index.min.js"></script>
+    <!-- aos (animate on scroll) -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- my javascript -->
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

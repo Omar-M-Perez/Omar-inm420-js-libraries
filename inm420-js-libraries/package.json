@@ -1,0 +1,14 @@
+{
+    "name": "inm420-js-libraries",
+    "version": "1.0.0",
+    "description": "Snowbird Travel Co. - a travel page built with third-party JavaScript libraries",
+    "scripts": {
+        "start": "lite-server --baseDir=\"public\""
+    },
+    "author": "Omar El Sadek",
+    "license": "private",
+    "private": true,
+    "devDependencies": {
+        "lite-server": "^2.6.1"
+    }
+}
